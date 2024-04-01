@@ -69,10 +69,10 @@ namespace kurs3.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        int id;
+
         public IActionResult Details(int id)
         {
-            id = 0;
+
             var events = _kyrsach2Context.Events.Find(id);
             if (events == null)
             {          
