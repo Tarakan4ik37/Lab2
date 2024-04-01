@@ -63,18 +63,16 @@ namespace kurs3.Controllers
             // Вычисление общей стоимости
             events.TotalCost = hostCost + venueCost + serviceCost;
 
-            events.TotalCost = hostCost - venueCost - serviceCost;
-
             _kyrsach2Context.Add(events);
             _kyrsach2Context.SaveChanges();
 
             return RedirectToAction(nameof(Index));
         }
 
-        int id;
+
         public IActionResult Details(int id)
         {
-            id = 0;
+
             var events = _kyrsach2Context.Events.Find(id);
             if (events == null)
             {          
