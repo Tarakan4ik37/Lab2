@@ -1,0 +1,22 @@
+﻿@model kurs3.Models.Event
+
+<h2>Детали</h2>
+
+<div>
+
+    <p>ID: @Model.EventId</p>
+    <p>Название: @Model.EventType</p>
+    <p>Дата проведения: @Model.Date.ToShortDateString()</p>
+    <p>Стоимость: @Model.TotalCost</p>
+    <p>ID-Своих данных: @Model.CustomerId</p>
+    <p>ID-Места: @Model.VenueId</p>
+    <p>ID-Ведущего: @Model.HostId</p>
+    <p>ID-Услуги: @Model.ServiceId</p>
+</div>
+
+<div>
+    <a asp-action="Index" class="btn btn-secondary">Вернуться к списку</a>
+</div>
+
+
+

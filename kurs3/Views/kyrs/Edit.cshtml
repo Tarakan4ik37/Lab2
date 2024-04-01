@@ -1,0 +1,42 @@
+﻿@model kurs3.Models.Venue
+
+<form asp-controller="Kyrs" asp-action="Edit" asp-route-id="@Model.VenueId">
+    @Html.AntiForgeryToken()
+
+    <input asp-for="VenueId" type="hidden" />
+
+    <div class="form-group">
+        <label asp-for="VenueName" class="control-label">Названи:</label>
+        <input asp-for="VenueName" class="form-control" />
+        <span asp-validation-for="VenueName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="AddressId" class="control-label">ID-Адреса</label>
+        <input asp-for="AddressId" class="form-control" />
+        <span asp-validation-for="AddressId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Capacity" class="control-label">Вместимость</label>
+        <input asp-for="Capacity" class="form-control" />
+        <span asp-validation-for="Capacity" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="RentalCost" class="control-label">Цена</label>
+        <textarea asp-for="RentalCost" class="form-control"></textarea>
+        <span asp-validation-for="RentalCost" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Photos" class="control-label">Ссылка на фото</label>
+        <input asp-for="Photos" class="form-control" />
+        <span asp-validation-for="Photos" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Сохранить" class="btn btn-success" />
+    </div>
+</form>
+<a asp-controller="kyrs" asp-action="Details" asp-route-id="@Model.VenueId" class="btn btn-secondary">Вернуться к просмотру</a>

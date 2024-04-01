@@ -1,0 +1,50 @@
+﻿@using Microsoft.AspNetCore.Identity;
+@model List<kurs3.Models.Venue>
+@inject UserManager<IdentityUser> UserManager
+@inject SignInManager<IdentityUser> SignInManager
+
+
+<div class="text-center">
+    <h1 class="display-4">Список мест для мероприятий</h1>
+</div>
+
+<table class="table table-bordered">
+    <thead class="thead-dark">
+        <tr>
+            <th>Фото</th>
+            <th>ID</th>
+            <th>Название</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var venue in Model)
+        {
+            <tr>
+                <td>
+                    @if (!string.IsNullOrEmpty(venue.Photos))
+                    {
+                        <img src="@venue.Photos" style="width:250px; height:auto;" />
+                    }
+                    else
+                    {
+                        <text>Фото отсутствует</text>
+                    }
+                </td>
+                <td>@venue.VenueId</td>
+                <td>@venue.VenueName</td>
+                <td>
+                    <a href="@Url.Action("Details", "Kyrs", new { id = venue.VenueId })" class="btn btn-info">Просмотр</a>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@if (SignInManager.IsSignedIn(User) && User.IsInRole("Администратор"))
+{
+    <div class="text-right">
+        <a href="@Url.Action("Create", "Kyrs")" class="btn btn-success">Добавить новое место</a>
+    </div>
+}
+<style>
+</style>

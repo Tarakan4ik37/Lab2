@@ -1,0 +1,39 @@
+﻿@model List<kurs3.Models.Service>
+@using Microsoft.AspNetCore.Identity;
+@inject UserManager<IdentityUser> UserManager
+@inject SignInManager<IdentityUser> SignInManager
+
+<div class="text-center">
+    <h1 class="display-4">Список услуг</h1>
+</div>
+
+<table class="table table-bordered">
+    <thead class="thead-dark">
+        <tr>
+            <th>ID</th>
+            <th>Услуги</th>
+            <th>Цена</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var service in Model)
+        {
+            <tr>
+                <td>@service.ServiceId</td>
+                <td>@service.ServiceName</td>
+                <td>@service.Cost</td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+
+@if (SignInManager.IsSignedIn(User) && User.IsInRole("Администратор"))
+{
+    <div class="text-right">
+        <a href="@Url.Action("Create", "Service")" class="btn btn-success">Добавить новую услугу</a>
+    </div>
+}
+
+<style>
+</style>

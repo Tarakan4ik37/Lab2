@@ -1,0 +1,33 @@
+﻿
+@model List<kurs3.Models.Customer>
+
+
+<div class="text-center">
+    <h1 class="display-4">Список покупателей</h1>
+</div>
+
+<table class="table table-bordered">
+    <thead class="thead-dark">
+        <tr>
+            <th>ID</th>
+            <th>Фамилия</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var customer in Model)
+        {
+            <tr>
+                <td>@customer.CustomerId</td>
+                <td>@customer.Surname</td>
+                <td> <a href="@Url.Action("Details", "Customer", new { id = customer.CustomerId })" class="btn btn-info">Просмотр</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+    <div class="text-right">
+        <a href="@Url.Action("Create", "Customer")" class="btn btn-success">Добавить себя в список</a>
+    </div>
+
+<style>
+</style>

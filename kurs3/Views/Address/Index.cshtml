@@ -1,0 +1,41 @@
+﻿@using Microsoft.AspNetCore.Identity;
+@model List<kurs3.Models.Address>
+@inject UserManager<IdentityUser> UserManager
+@inject SignInManager<IdentityUser> SignInManager
+
+<div class="text-center">
+    <h1 class="display-4">Список адресов мест для проведения мероприятий</h1>
+</div>
+
+<table class="table table-bordered">
+    <thead class="thead-dark">
+        <tr>
+            <th>ID</th>
+            <th>Страна</th>
+            <th>Город</th>
+            <th>Улица</th>
+            <th>Номер дома</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var address in Model)
+        {
+            <tr>
+                <td>@address.AddressId</td>
+                <td>@address.Country</td>
+                <td>@address.City</td>
+                <td>@address.Street</td>
+                <td>@address.NomerHouse</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@if (SignInManager.IsSignedIn(User) && User.IsInRole("Администратор"))
+{
+    <div class="text-right">
+        <a href="@Url.Action("Create", "Address")" class="btn btn-success">Добавить новый адресс</a>
+    </div>
+}
+<style>
+</style>

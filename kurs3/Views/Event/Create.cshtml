@@ -1,0 +1,56 @@
+﻿@model kurs3.Models.Event
+
+<form asp-controller="Event" asp-action="Create" method="post" enctype="multipart/form-data">
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        <label asp-for="EventType" class="control-label">Название</label>
+        <input asp-for="EventType" class="form-control" />
+        <span asp-validation-for="EventType" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Date" class="control-label">Дата проведения</label>
+        <input asp-for="Date" class="form-control" />
+        <span asp-validation-for="Date" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="CustomerId" class="control-label">Id-Своих данных</label>
+        <input asp-for="CustomerId" class="form-control" />
+        <span asp-validation-for="CustomerId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="VenueId" class="control-label">Id-Места</label>
+        <textarea asp-for="VenueId" class="form-control"></textarea>
+        <span asp-validation-for="VenueId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="HostId" class="control-label">Id-Ведущего</label>
+        <input asp-for="HostId" class="form-control" />
+        <span asp-validation-for="HostId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ServiceId" class="control-label">Id-Услуги</label>
+        <input asp-for="ServiceId" class="form-control" />
+        <span asp-validation-for="ServiceId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Создать" class="btn btn-primary" />
+    </div>
+
+    <div class="col-md-4">
+        <img src="https://sun9-61.userapi.com/impg/FLU1Oqo2isBU2RMtvmAgdEFkC7vDmZStpigmxQ/RjeA0diL--M.jpg?size=428x150&quality=96&sign=f38cf0b0a4bdec52ec00f66637dd5bb1&type=album" alt="Изображение" class="img-fluid" />
+    </div>
+
+</form>
+<a asp-action="Index" class="btn btn-secondary">Вернуться к списку</a>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

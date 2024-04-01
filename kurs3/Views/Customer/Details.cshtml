@@ -1,0 +1,20 @@
+﻿@model kurs3.Models.Customer
+
+<h2>Детали</h2>
+
+<div>
+
+    <p>ID: @Model.CustomerId</p>
+    <p>Имя: @Model.CustomerName</p>
+    <p>Фамилия: @Model.Surname</p>
+    <p>Отчество: @Model.Patronymic</p>
+    <p>Телефон: @Model.Telephone</p>
+    <p>Статус: @Model.Status</p>
+</div>
+
+<div>
+    <a asp-action="Index" class="btn btn-secondary">Вернуться к списку</a>
+</div>
+
+
+

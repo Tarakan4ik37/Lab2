@@ -1,0 +1,44 @@
+﻿@model kurs3.Models.Venue
+
+<form asp-controller="kurs3" asp-action="Create" method="post" enctype="multipart/form-data">
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        <label asp-for="VenueName" class="control-label">Название</label>
+        <input asp-for="VenueName" class="form-control" />
+        <span asp-validation-for="VenueName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="AddressId" class="control-label">ID-Адреса</label>
+        <input asp-for="AddressId" class="form-control" />
+        <span asp-validation-for="AddressId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Capacity" class="control-label">Вместимость</label>
+        <input asp-for="Capacity" class="form-control" />
+        <span asp-validation-for="Capacity" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="RentalCost" class="control-label">Цена</label>
+        <textarea asp-for="RentalCost" class="form-control"></textarea>
+        <span asp-validation-for="RentalCost" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Photos" class="control-label">Ссылка на изображение</label>
+        <input asp-for="Photos" class="form-control" />
+        <span asp-validation-for="Photos" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Создать" class="btn btn-primary" />
+    </div>
+</form>
+<a asp-action="Index" class="btn btn-secondary">Вернуться к списку</a>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

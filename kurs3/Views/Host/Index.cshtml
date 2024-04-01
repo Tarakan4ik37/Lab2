@@ -1,0 +1,44 @@
+﻿@model List<kurs3.Models.Host>
+@using Microsoft.AspNetCore.Identity;
+@inject UserManager<IdentityUser> UserManager
+@inject SignInManager<IdentityUser> SignInManager
+
+<div class="text-center">
+    <h1 class="display-4">Список ведущих</h1>
+</div>
+
+<table class="table table-bordered">
+    <thead class="thead-dark">
+        <tr>
+            <th>ID</th>
+            <th>Имя</th>
+            <th>Фамилия</th>
+            <th>Отчество</th>
+            <th>Телефон</th>
+            <th>Цена</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var host in Model)
+        {
+            <tr>
+                <td>@host.HostId</td>
+                <td>@host.HostName</td>
+                <td>@host.Surname</td>
+                <td>@host.Patronymic</td>
+                <td>@host.Telephone</td>
+                <td>@host.ServiceCost</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@if (SignInManager.IsSignedIn(User) && User.IsInRole("Администратор"))
+{
+    <div class="text-right">
+        <a href="@Url.Action("Create", "Host")" class="btn btn-success">Добавить нового ведущего</a>
+    </div>
+}
+
+<style>
+</style>

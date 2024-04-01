@@ -1,0 +1,34 @@
+﻿
+@model List<kurs3.Models.Event>
+
+<div class="text-center">
+    <h1 class="display-4">Список Мероприятий</h1>
+</div>
+
+<table class="table table-bordered">
+    <thead class="thead-dark">
+        <tr>
+            <th>ID</th>
+            <th>Название</th>
+        </tr>
+    </thead>
+    <tbody>
+            @foreach (var events in Model)
+            {
+                <tr>
+                    <td>@events.EventId</td>
+                    <td>@events.EventType</td>
+                    <td> <a href="@Url.Action("Details", "Event", new { id = events.EventId })" class="btn btn-info">Просмотр</a></td>
+                </tr>
+            }
+    </tbody>
+</table>
+
+
+    <div class="text-right">
+        <a href="@Url.Action("Create", "Event")" class="btn btn-success">Добавить новое мероприятие</a>
+    </div>
+
+
+<style>
+</style>

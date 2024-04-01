@@ -1,0 +1,48 @@
+﻿@using Microsoft.AspNetCore.Identity;
+@model kurs3.Models.Venue
+@inject UserManager<IdentityUser> UserManager
+@inject SignInManager<IdentityUser>  SignInManager  
+
+
+<h2>Детали</h2>
+
+<div>
+    <!-- Отображение фотографии товара -->
+    @if (!string.IsNullOrEmpty(Model.Photos))
+    {
+        <img src="@Model.Photos" alt="Фото товара" style="max-width: 500px;" />
+    };
+    else
+    {
+        <p>Фото отсутствует.</p>
+    }
+    
+
+    <p>ID: @Model.VenueId</p>
+    <p>Название: @Model.VenueName</p>
+    <p>ID-Адреса: @Model.AddressId</p>
+    <p>Вместимость: @Model.Capacity</p>
+    <p>Цена: @Model.RentalCost</p>
+</div>
+
+@if (SignInManager.IsSignedIn(User) && User.IsInRole("Администратор"))
+{
+    <!-- Кнопка редактирования -->
+<a asp-action="Edit" asp-route-id="@Model.VenueId" class="btn btn-primary">Редактировать</a>
+}
+<div>
+    <a asp-action="Index" class="btn btn-secondary">Вернуться к списку</a>
+</div>
+
+
+
+@if (SignInManager.IsSignedIn(User) && User.IsInRole("Администратор")){
+<!-- Кнопка удаления -->
+
+<form asp-action="Delete" method="post" onsubmit="return confirm('Вы уверены, что хотите удалить этот товар?');">
+    @Html.AntiForgeryToken()
+    <input type="hidden" name="id" value="@Model.VenueId" />
+    <input type="submit" value="Удалить" class="btn btn-danger" />
+</form>
+}
+
