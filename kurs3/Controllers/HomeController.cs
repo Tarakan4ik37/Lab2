@@ -15,10 +15,15 @@ namespace kurs3.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            return CommonView();
         }
 
         public IActionResult Privacy()
+        {
+            return CommonView();
+        }
+
+        private IActionResult CommonView()
         {
             return View();
         }
