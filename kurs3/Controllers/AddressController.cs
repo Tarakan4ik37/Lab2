@@ -17,7 +17,6 @@ namespace kurs3.Controllers
         {
             List<Address> addresses = _kyrsach2Context.Addresses.ToList();
             return View(addresses); // Указываем явный путь к представлению
-            return View(addresses);
         }
         
        
